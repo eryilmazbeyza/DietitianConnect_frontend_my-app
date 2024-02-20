@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import CRUD from './CRUD';
+import DietitianCRUD from './DietitianCRUD';
+import ArticleCRUD from './ArticleCRUD';
 
 function App() {
   return (
     <div className="App">
-   <CRUD/>
+   {/* <DietitianCRUD/> */}
+   <ArticleCRUD/>
     </div>
   );
 }
