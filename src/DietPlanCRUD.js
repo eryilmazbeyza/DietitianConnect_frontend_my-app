@@ -10,33 +10,39 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 
-const ArticleCRUD = () => {
+const DietPlanCRUD = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [title, settitle] = useState("");
-  const [content, setcontent] = useState("");
-  const [authorID, setauthorID] = useState("");
-  const [publicationDate, setpublicationDate] = useState("");
-  const [category, setcategory] = useState("");
+  const [userID, setuserID] = useState("");
+  const [dietitianID, setdietitianID] = useState("");
+  const [startDate, setstartDate] = useState("");
+  const [endDate, setendDate] = useState("");
+  const [targetWeight, settargetWeight] = useState("");
+  const [dietDescription, setdietDescription] = useState("");
 
   const [editID, setEditId] = useState("");
-  const [editTitle, setEditTitle] = useState("");
-  const [editContent, setEditContent] = useState("");
-  const [editAuthorID, setEditAuthorID] = useState("");
-  const [editPublicationDate, setEditPublicationDate] = useState("");
-  const [editCategory, setEditCategory] = useState("");
+  const [editUserID, setEditUserID] = useState("");
+  const [editDietitianID, setEditDietitianID] = useState("");
+  const [editStartDate, setEditStartDate] = useState("");
+  const [editEndDate, setEditEndDate] = useState("");
+  const [editTargetWeight, setEditTargetWeight] = useState("");
+  const [editDietDescription, setEditDietDescription] = useState("");
 
-  const articledata = [
+
+  const plandata = [
     {
-      articleID: 1,
-      title: "nutrution",
-      content: "finenutri",
-      authorID: "1",
-      publicationDate: "2020-10-10 00:00:00.0000000",
-      category: "nutri",
+      planID: 4,
+      userID: 1,
+      dietitianID: 1,
+      startDate: "2023-10-10 00:00:00.0000000",
+      endDate: "2024-10-10 00:00:00.0000000",
+      targetWeight: "10.00",
+      dietDescription: "lowcarb",
+      user: null,
+      dietitian: null,
     },
   ];
 
@@ -48,7 +54,7 @@ const ArticleCRUD = () => {
 
   const getData = () => {
     axios
-      .get("https://localhost:7125/api/Article")
+      .get("https://localhost:7125/api/DietPlan")
       .then((result) => {
         setData(result.data);
       })
@@ -60,13 +66,14 @@ const ArticleCRUD = () => {
   const handleEdit = (id) => {
     handleShow();
     axios
-      .get(`https://localhost:7125/api/Article/${id}`)
+      .get(`https://localhost:7125/api/DietPlan/${id}`)
       .then((result) => {
-        setEditTitle(result.data.title);
-        setEditContent(result.data.content);
-        setEditAuthorID(result.data.authorID);
-        setEditPublicationDate(result.data.publicationDate);
-        setEditCategory(result.data.category);
+        setEditUserID(result.data.userID);
+        setEditDietitianID(result.data.dietitianID);
+        setEditStartDate(result.data.startDate);
+        setEditEndDate(result.data.endDate);
+        setEditTargetWeight(result.data.targetWeight);
+        setEditDietDescription(result.data.dietDescription);
         setEditId(id);
       })
       .catch((error) => {
@@ -75,47 +82,32 @@ const ArticleCRUD = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure to delete this article?") === true) {
+    if (window.confirm("Are you sure to delete this diet plan?") === true) {
       axios
-        .delete(`https://localhost:7125/api/Article/${id}`)
+        .delete(`https://localhost:7125/api/DietPlan/${id}`)
         .then((result) => {
           if (result.status === 200) {
-            toast.success("Article has been deleted");
+            toast.success("Diet Plan has been deleted");
             getData();
           }
         })
         .catch((error) => {
           console.error(error); // Hata mesajını konsola yazdır
-          toast.error("Error deleting article");
+          toast.error("Error deleting diet plan");
         });
     }
   };
 
-  // const handleDelete = (id) => {
-  //   if (window.confirm("Are you sure to delete this dietitian?") === true) {
-  //     axios.delete(`https://localhost:7125/api/Dietitian/${id}`)
-  //       .then((result) => {
-  //         if (result.status === 200)
-  //         {
-  //           toast.success("Dietitian has been deleted");
-  //           getData();
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         toast.error(error);
-  //       });
-  //   }
-  // };
-
   const handleUpdate = () => {
-    const url = `https://localhost:7125/api/Article/${editID}`;
+    const url = `https://localhost:7125/api/DietPlan/${editID}`;
     const data = {
-      articleID: editID,
-      title: editTitle,
-      content: editContent,
-      authorID: editAuthorID,
-      publicationDate: editPublicationDate,
-      category: editCategory,
+      planID: editID,
+      userID: editUserID,
+      dietitianID: editDietitianID,
+      startDate: editStartDate,
+      endDate: editEndDate,
+      targetWeight: editTargetWeight,
+      dietDescription: editDietDescription,
     };
 
     axios
@@ -124,7 +116,7 @@ const ArticleCRUD = () => {
         handleClose();
         getData();
         clear();
-        toast.success("Article has been updated");
+        toast.success("Diet Plan has been updated");
       })
       .catch((error) => {
         toast.error(error);
@@ -132,13 +124,14 @@ const ArticleCRUD = () => {
   };
 
   const handleSave = () => {
-    const url = "https://localhost:7125/api/Article";
+    const url = "https://localhost:7125/api/DietPlan";
     const data = {
-      title: title,
-      content: content,
-      authorID: authorID,
-      publicationDate: publicationDate,
-      category: category,
+        userID: userID,
+        dietitianID: dietitianID,
+        startDate: startDate,
+        endDate: endDate,
+        targetWeight: targetWeight,
+        dietDescription: dietDescription,
     };
 
     axios
@@ -146,7 +139,7 @@ const ArticleCRUD = () => {
       .then((result) => {
         getData();
         clear();
-        toast.success("Article has been added");
+        toast.success("Diet Plan has been added");
       })
       .catch((error) => {
         toast.error(error);
@@ -154,16 +147,18 @@ const ArticleCRUD = () => {
   };
 
   const clear = () => {
-    settitle("");
-    setcontent("");
-    setauthorID("");
-    setpublicationDate("");
-    setcategory("");
-    setEditTitle("");
-    setEditContent("");
-    setEditAuthorID("");
-    setEditPublicationDate("");
-    setEditCategory("");
+    setuserID("");
+    setdietitianID("");
+    setstartDate("");
+    setendDate("");
+    settargetWeight("");
+    setdietDescription("");
+    setEditUserID("");
+    setEditDietitianID("");
+    setEditStartDate("");
+    setEditEndDate("");
+    setEditTargetWeight("");
+    setEditDietDescription("");
     setEditId("");
   };
 
@@ -176,48 +171,56 @@ const ArticleCRUD = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Title"
-              value={title}
-              onChange={(e) => settitle(e.target.value)}
+              placeholder="Enter User ID"
+              value={userID}
+              onChange={(e) => setuserID(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Content"
-              value={content}
-              onChange={(e) => setcontent(e.target.value)}
-            />
-          </Col>
-          <Col>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter Author ID"
-              value={authorID}
-              onChange={(e) => setauthorID(e.target.value)}
+              placeholder="Enter Dietitian ID"
+              value={dietitianID}
+              onChange={(e) => setdietitianID(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="datetime-local"
               className="form-control"
-              placeholder="Enter Publication Date"
-              value={publicationDate}
-              onChange={(e) => setpublicationDate(e.target.value)}
+              placeholder="Enter Start Date"
+              value={startDate}
+              onChange={(e) => setstartDate(e.target.value)}
+            />
+          </Col>
+          <Col>
+            <input
+              type="datetime-local"
+              className="form-control"
+              placeholder="Enter End Date"
+              value={endDate}
+              onChange={(e) => setendDate(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Category"
-              value={category}
-              onChange={(e) => setcategory(e.target.value)}
+              placeholder="Enter Target Weight"
+              value={targetWeight}
+              onChange={(e) => settargetWeight(e.target.value)}
             />
           </Col>
-
+          <Col>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Diet Description"
+              value={dietDescription}
+              onChange={(e) => setdietDescription(e.target.value)}
+            />
+          </Col>          
           <Col>
             <button className="btn btn-primary" onClick={() => handleSave()}>
               Submit
@@ -230,11 +233,12 @@ const ArticleCRUD = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>AuthorID</th>
-            <th>Publication Date</th>
-            <th>Category</th>
+            <th>UserID</th>
+            <th>DietitianID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Target Weight</th>
+            <th>Diet Description</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -244,22 +248,23 @@ const ArticleCRUD = () => {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.title}</td>
-                    <td>{item.content}</td>
-                    <td>{item.authorID}</td>
-                    <td>{item.publicationDate}</td>
-                    <td>{item.category}</td>
+                    <td>{item.userID}</td>
+                    <td>{item.dietitianID}</td>
+                    <td>{item.startDate}</td>
+                    <td>{item.endDate}</td>
+                    <td>{item.targetWeight}</td>
+                    <td>{item.dietDescription}</td>
                     <td colSpan={2}>
                       <button
                         className="btn btn-primary"
-                        onClick={() => handleEdit(item.articleID)}
+                        onClick={() => handleEdit(item.planID)}
                       >
                         Edit
                       </button>{" "}
                       &nbsp;
                       <button
                         className="btn btn-danger"
-                        onClick={() => handleDelete(item.articleID)}
+                        onClick={() => handleDelete(item.planID)}
                         //Yukarıdaki kod örneğinde, her bir dietitian için bir buton oluşturulurken, handleDelete fonksiyonu çağrılırken o dietitian'ın dietitianID'si kullanılır. Bu sayede doğru ID'nin silineceğini sağlarsınız.
                         //React tarafında, kullanıcının bir dietitian'i silmek için tıkladığı butonun içinde bu handleDelete fonksiyonunu çağırmanız gerekiyor.
                       >
@@ -283,45 +288,54 @@ const ArticleCRUD = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Title"
-                value={editTitle}
-                onChange={(e) => setEditTitle(e.target.value)}
+                placeholder="Enter User ID"
+                value={editUserID}
+                onChange={(e) => setEditUserID(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Content"
-                value={editContent}
-                onChange={(e) => setEditContent(e.target.value)}
+                placeholder="Enter Dietitian ID"
+                value={editDietitianID}
+                onChange={(e) => setEditDietitianID(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Author ID"
-                value={editAuthorID}
-                onChange={(e) => setEditAuthorID(e.target.value)}
+                placeholder="Enter Start Date"
+                value={editStartDate}
+                onChange={(e) => setEditStartDate(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Publication Date"
-                value={editPublicationDate}
-                onChange={(e) => setEditPublicationDate(e.target.value)}
+                placeholder="Enter End Date"
+                value={editEndDate}
+                onChange={(e) => setEditEndDate(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Category"
-                value={editCategory}
-                onChange={(e) => setEditCategory(e.target.value)}
+                placeholder="Enter Target Weight"
+                value={editTargetWeight}
+                onChange={(e) => setEditTargetWeight(e.target.value)}
+              />
+            </Col>
+            <Col>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Diet Description"
+                value={editDietDescription}
+                onChange={(e) => setEditDietDescription(e.target.value)}
               />
             </Col>
           </Row>
@@ -339,4 +353,4 @@ const ArticleCRUD = () => {
   );
 };
 
-export default ArticleCRUD;
+export default DietPlanCRUD;
