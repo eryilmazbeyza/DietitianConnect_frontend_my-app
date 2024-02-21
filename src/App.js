@@ -5,6 +5,7 @@ import ArticleCRUD from "./ArticleCRUD";
 import DietPlanCRUD from "./DietPlanCRUD";
 import MealTrackingCRUD from "./MealTrackingCRUD";
 import UserCRUD from "./UserCRUD";
+import AdminCRUD from "./AdminCRUD";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <ArticleCRUD/> */}
       {/* <DietPlanCRUD/> */}
       {/* <MealTrackingCRUD/> */}
-      <UserCRUD/>
+      {/* <UserCRUD/> */}
+      <AdminCRUD/>
     </div>
   );
 }

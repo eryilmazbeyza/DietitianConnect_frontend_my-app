@@ -37,7 +37,7 @@ const MealTrackingCRUD = () => {
   const [editCarbohydrates, setEditCarbohydrates] = useState("");
   const [editFat, setEditFat] = useState("");
 
-  const plandata = [
+  const trackingdata = [
     {
       trackingID: 1,
       userID: 1,
