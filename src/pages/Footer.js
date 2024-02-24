@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import {Link} from 'react-router-dom';
 
 function Footer() {
   return <Fragment>
@@ -6,10 +7,10 @@ function Footer() {
           <div className="container">
             <i className="icon-cupcake logo"></i>
             <nav className="footer-navigation">
-              <a href="assets/about.html">About me</a>
-              <a href="assets/offer.html">My offer</a>
-              <a href="assets/recipe.html">Recipes</a>
-              <a href="assets/contact.html">Contact</a>
+            <Link to="/about">About me</Link>
+            <Link to="/myoffer">My offer</Link>
+            <Link to="/recipes">Recipes</Link>
+            <Link to="/contact">Contact</Link>
             </nav>
             <div className="subscribe">
               <form action="#">

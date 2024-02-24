@@ -15,7 +15,6 @@ function Index() {
             <small className="site-description">Professional Dietician</small>
           </div>
         </div>
-        {/* <ArticleCRUD /> */}
         <main className="main-content">
           <div className="fullwidth-block cooking-section category-block">
             <div className="container">

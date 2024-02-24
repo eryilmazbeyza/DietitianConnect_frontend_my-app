@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import {Link} from 'react-router-dom';
 
-function Menu(){
+function AdminMenu(){
    return(
    <Fragment>
-        <header className="site-header">
+                       <header className="site-header">
           <div className="container">
-            <a href="/" id="branding" className="pull-left">
+            <a href="/admin" id="branding" className="pull-left">
               <i className="icon-cupcake logo"></i>
               <h1 className="site-title">
-                <Link to="/">Name Surname</Link>
+                <Link to="/admin">Name Surname</Link>
             </h1>
             </a>
             {/* <!-- Default snippet for navigation --> */}
@@ -19,22 +19,22 @@ function Menu(){
               </button>
               <ul className="menu">
                 <li className="menu-item">
-                <Link to="/about">About me</Link>
+                <Link to="/dietitiancrud">DietitianCRUD</Link>
                 </li>
                 <li className="menu-item">
-                <Link to="/myoffer">My offer</Link>
+                <Link to="/dietplancrud">DietPlanCRUD</Link>
                 </li>
                 <li className="menu-item">
-                <Link to="/recipes">Recipes</Link>
+                <Link to="/articlecrud">ArticleCRUD</Link>
                 </li>
                 <li className="menu-item">
-                <Link to="/contact">Contact</Link>
+                <Link to="/mealTrackingcrud">MealTrackingCRUD</Link>
                 </li>
                 <li className="menu-item">
-                <Link to="/login">Login&Registration</Link>
+                <Link to="/usercrud">UserCRUD</Link>
                 </li>
                 <li className="menu-item">
-                <Link to="/admin">Admin</Link>
+                <Link to="/admincrud">AdminCRUD</Link>
                 </li>
               </ul>
               {/* <!-- .menu --> */}
@@ -48,4 +48,4 @@ function Menu(){
     </Fragment>
     ) 
 }
-export default Menu;
+export default AdminMenu;

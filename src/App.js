@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import DietitianCRUD from "./DietitianCRUD";
 import ArticleCRUD from "./ArticleCRUD";
@@ -12,6 +11,9 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Offer from "./pages/Offer";
 import Recipe from "./pages/Recipe";
 import Contact from "./pages/Contact";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -23,14 +25,18 @@ function App() {
           <Route path='/myoffer' element={<Offer/>}/>
           <Route path='/recipes' element={<Recipe/>}/>
           <Route path='/contact' element={<Contact/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/admin' element={<Admin/>}/>
+          <Route path='/dietitiancrud' element={<DietitianCRUD/>}/>
+          <Route path='/dietplancrud' element={<DietPlanCRUD/>}/>
+          <Route path='/articlecrud' element={<ArticleCRUD/>}/>
+          <Route path='/mealTrackingcrud' element={<MealTrackingCRUD/>}/>
+          <Route path='/usercrud' element={<UserCRUD/>}/>
+          <Route path='/admincrud' element={<AdminCRUD/>}/>
         </Routes>
       </Router>
-      {/* <DietitianCRUD/> */}
-      {/* <ArticleCRUD/> */}
-      {/* <DietPlanCRUD/> */}
-      {/* <MealTrackingCRUD/> */}
-      {/* <UserCRUD/> */}
-      {/* <AdminCRUD/> */}
+      {/* <Registration/> <br></br> */}
+      {/* <Login/> */}
       
     </div>
   );

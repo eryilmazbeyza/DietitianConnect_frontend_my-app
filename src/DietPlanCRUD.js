@@ -9,6 +9,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
+import AdminMenu from "./pages/AdminMenu";
+import AdminFooter from "./pages/AdminFooter";
 
 const DietPlanCRUD = () => {
   const [show, setShow] = useState(false);
@@ -164,6 +166,7 @@ const DietPlanCRUD = () => {
 
   return (
     <Fragment>
+      <AdminMenu/>
       <ToastContainer />
       <Container>
         <Row>
@@ -349,6 +352,7 @@ const DietPlanCRUD = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <AdminFooter/>
     </Fragment>
   );
 };

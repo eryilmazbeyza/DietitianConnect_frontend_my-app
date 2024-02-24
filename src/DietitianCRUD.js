@@ -9,6 +9,8 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminMenu from "./pages/AdminMenu";
+import AdminFooter from "./pages/AdminFooter";
 
 const DietitianCRUD= () => {
   const [show, setShow] = useState(false);
@@ -159,6 +161,7 @@ const DietitianCRUD= () => {
 
   return (
     <Fragment>
+      <AdminMenu/>
       <ToastContainer />
       <Container>
         <Row>
@@ -284,6 +287,7 @@ const DietitianCRUD= () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <AdminFooter/>
     </Fragment>
   );
 };
