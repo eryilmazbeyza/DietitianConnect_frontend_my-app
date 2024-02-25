@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import "./Login.css";
 import axios from "axios";
 import Menu from "./Menu";
 import Footer from "./Footer";
@@ -30,15 +31,18 @@ function Login() {
   };
   return (
     <Fragment>
-      <div id="site-content">
+      <div id="site-content-login">
         <Menu />
 
-        <main className="main-content">
-          <div className="author-bio">
-            <div className="container">
+        <main className="main-content-login">
+          <div className="login-author-bio">
+            <div className="logincontainer">
               <div className="row">
-                <div className="col-md-5">
-                  <label>Email</label>
+              <div class="registration-form">
+                  <div class="bold-text">
+                  Login                 <br />
+                <br />
+              <label>Email</label>
                   <input
                     type="text"
                     id="txtEmail"
@@ -54,15 +58,25 @@ function Login() {
                     onChange={(e) => handlePasswordHashChange(e.target.value)}
                   />
                   <br></br>
-                  <button onClick={() => handleLogin()}>Login</button>
-                  <Registration />
+                  <button onClick={() => handleLogin()} id="loginBtn">
+                    Login
+                  </button>
+                  </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="registration-form">
+                  <div class="bold-text">
+                    <Registration />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </main>
         {/* <!-- .main-content --> */}
-       
+
         <Footer />
       </div>
 

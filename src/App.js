@@ -7,13 +7,14 @@ import UserCRUD from "./UserCRUD";
 import AdminCRUD from "./AdminCRUD";
 import Index from "./pages";
 import About from "./pages/About";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Offer from "./pages/Offer";
 import Recipe from "./pages/Recipe";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -33,11 +34,12 @@ function App() {
           <Route path='/mealTrackingcrud' element={<MealTrackingCRUD/>}/>
           <Route path='/usercrud' element={<UserCRUD/>}/>
           <Route path='/admincrud' element={<AdminCRUD/>}/>
+          <Route path='/adminlogin' element={<AdminLogin/>}/>
         </Routes>
       </Router>
       {/* <Registration/> <br></br> */}
       {/* <Login/> */}
-      
+
     </div>
   );
 }

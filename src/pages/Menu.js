@@ -34,7 +34,7 @@ function Menu(){
                 <Link to="/login">Login&Registration</Link>
                 </li>
                 <li className="menu-item">
-                <Link to="/admin">Admin</Link>
+                <Link to="/adminlogin">Admin</Link>
                 </li>
               </ul>
               {/* <!-- .menu --> */}

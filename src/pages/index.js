@@ -104,6 +104,8 @@ function Index() {
           {/* <!-- .vegetables-section --> */}
         </main>
         {/* <!-- .main-content --> */}
+
+        
         <Footer/>
       </div>
 

@@ -44,7 +44,8 @@ function Registration() {
 
   return (
     <Fragment>
-      <div>Registration</div>
+      <div>Registration                <br />
+                <br /></div>
       <label>Name</label>
       <input
         type="text"
@@ -85,7 +86,7 @@ function Registration() {
         onChange={(e) => handleGenderChange(e.target.value)}
       />
       <br></br>
-      <button onClick={() => handleSave()}>Save</button>
+      <button onClick={() => handleSave()} id="loginBtn">Save</button>
     </Fragment>
   );
 }
