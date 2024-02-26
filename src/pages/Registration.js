@@ -72,7 +72,7 @@ function Registration() {
       <br></br>
       <label>Doğum Tarihi</label>
       <input
-        type="text"
+        type="datetime-local"
         id="txtBirthDate"
         placeholder="Enter BirthDate"
         onChange={(e) => handleBirthDateChange(e.target.value)}
