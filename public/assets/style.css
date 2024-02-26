@@ -608,12 +608,12 @@ p { margin-top: 0; }
 .site-footer .social-links a { color: white; text-align: center; line-height: 1.9; width: 50px; height: 50px; border-radius: 50%; display: inline-block; margin: 0 5px; -webkit-transition: .3s ease; transition: .3s ease; font-size: 26px; font-size: 1.625rem; }
 .site-footer .social-links .facebook { background-color: #3b5a9b; }
 .site-footer .social-links .facebook:hover { background-color: #4e71bb; }
-.site-footer .social-links .twitter { background-color: #1c9ac7; }
-.site-footer .social-links .twitter:hover { background-color: #34b4e2; }
+.site-footer .social-links .twitter { background-color: #e47365; }
+.site-footer .social-links .twitter:hover { background-color: #e47365; }
 .site-footer .social-links .google-plus { background-color: #dd4b39; }
 .site-footer .social-links .google-plus:hover { background-color: #e47365; }
-.site-footer .social-links .pinterest { background-color: #d11e2e; }
-.site-footer .social-links .pinterest:hover { background-color: #e33f4d; }
+.site-footer .social-links .pinterest { background-color: #3b5a9b; }
+.site-footer .social-links .pinterest:hover { background-color: #3b5a9b; }
 .site-footer .colophon { font-size: 14px; font-size: 0.875rem; }
 
 .dropdown {

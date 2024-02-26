@@ -44,9 +44,9 @@ function Registration() {
 
   return (
     <Fragment>
-      <div>Registration                <br />
+      <div>Kayıt Ol                <br />
                 <br /></div>
-      <label>Name</label>
+      <label>Ad Soyad</label>
       <input
         type="text"
         id="txtName"
@@ -54,7 +54,7 @@ function Registration() {
         onChange={(e) => handleUserNameChange(e.target.value)}
       />
       <br></br>
-      <label>PasswordHash</label>
+      <label>Şifre</label>
       <input
         type="text"
         id="txtPasswordHash"
@@ -70,7 +70,7 @@ function Registration() {
         onChange={(e) => handleEmailChange(e.target.value)}
       />
       <br></br>
-      <label>BirthDate</label>
+      <label>Doğum Tarihi</label>
       <input
         type="text"
         id="txtBirthDate"
@@ -78,7 +78,7 @@ function Registration() {
         onChange={(e) => handleBirthDateChange(e.target.value)}
       />
       <br></br>
-      <label>Gender</label>
+      <label>Cinsiyet</label>
       <input
         type="text"
         id="txtGender"
@@ -86,7 +86,7 @@ function Registration() {
         onChange={(e) => handleGenderChange(e.target.value)}
       />
       <br></br>
-      <button onClick={() => handleSave()} id="loginBtn">Save</button>
+      <button onClick={() => handleSave()} id="loginBtn">Kaydol</button>
     </Fragment>
   );
 }

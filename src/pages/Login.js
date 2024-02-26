@@ -4,10 +4,15 @@ import axios from "axios";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import Registration from "./Registration";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [passwordHash, setPasswordHash] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
   const handlePasswordHashChange = (value) => {
     setPasswordHash(value);
   };
@@ -24,9 +29,19 @@ function Login() {
       .post(url, data)
       .then((result) => {
         alert(result.data);
+        if (result.data === "User is Invalid") {
+          // Admin is invalid durumunda sayfaya yönlendirme yap
+          
+        } else {
+          setLoggedIn(true);
+          setError(null);
+          // Başarılı girişte yönlendirme yap
+          navigate("/");
+        }
       })
       .catch((error) => {
         alert(error);
+        
       });
   };
   return (
@@ -40,7 +55,7 @@ function Login() {
               <div className="row">
               <div class="registration-form">
                   <div class="bold-text">
-                  Login                 <br />
+                  Oturum Aç                <br />
                 <br />
               <label>Email</label>
                   <input
@@ -50,7 +65,7 @@ function Login() {
                     onChange={(e) => handleEmailChange(e.target.value)}
                   />
                   <br></br>
-                  <label>PasswordHash</label>
+                  <label>Şifre</label>
                   <input
                     type="text"
                     id="txtPasswordHash"
@@ -58,9 +73,9 @@ function Login() {
                     onChange={(e) => handlePasswordHashChange(e.target.value)}
                   />
                   <br></br>
-                  <button onClick={() => handleLogin()} id="loginBtn">
-                    Login
-                  </button>
+                  <button onClick={() => handleLogin()}>Oturum Aç</button>
+            {isLoggedIn && !error && <Link to="/">User</Link>}
+            {!isLoggedIn && !error && <div></div>}
                   </div>
                 </div>
                 <br />

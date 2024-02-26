@@ -9,33 +9,36 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import AdminMenu from "./pages/AdminMenu";
-import AdminFooter from "./pages/AdminFooter";
+import AdminMenu from "../pages/AdminMenu";
+import AdminFooter from "../pages/AdminFooter";
 
-const AdminCRUD = () => {
+const ArticleCRUD = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [adminName, setadminName] = useState("");
-  const [passwordHash, setpasswordHash] = useState("");
-  const [email, setemail] = useState("");
-  const [authorizationLevel, setauthorizationLevel] = useState("");
+  const [title, settitle] = useState("");
+  const [content, setcontent] = useState("");
+  const [authorID, setauthorID] = useState("");
+  const [publicationDate, setpublicationDate] = useState("");
+  const [category, setcategory] = useState("");
 
   const [editID, setEditId] = useState("");
-  const [editAdminName, setEditAdminName] = useState("");
-  const [editPasswordHash, setEditPasswordHash] = useState("");
-  const [editEmail, setEditEmail] = useState("");
-  const [editAuthorizationLevel, setEditAuthorizationLevel] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
+  const [editAuthorID, setEditAuthorID] = useState("");
+  const [editPublicationDate, setEditPublicationDate] = useState("");
+  const [editCategory, setEditCategory] = useState("");
 
-  const admindata = [
+  const articledata = [
     {
-      adminID: 1,
-      adminName: "bne",
-      passwordHash: "1234",
-      email: "eryilmazbeyza@gmail.com",
-      authorizationLevel: "fullautorization",
+      articleID: 1,
+      title: "nutrution",
+      content: "finenutri",
+      authorID: "1",
+      publicationDate: "2020-10-10 00:00:00.0000000",
+      category: "nutri",
     },
   ];
 
@@ -47,7 +50,7 @@ const AdminCRUD = () => {
 
   const getData = () => {
     axios
-      .get("https://localhost:7125/api/Admin")
+      .get("https://localhost:7125/api/Article")
       .then((result) => {
         setData(result.data);
       })
@@ -59,12 +62,13 @@ const AdminCRUD = () => {
   const handleEdit = (id) => {
     handleShow();
     axios
-      .get(`https://localhost:7125/api/Admin/${id}`)
+      .get(`https://localhost:7125/api/Article/${id}`)
       .then((result) => {
-        setEditAdminName(result.data.adminName);
-        setEditPasswordHash(result.data.passwordHash);
-        setEditEmail(result.data.email);
-        setEditAuthorizationLevel(result.data.authorizationLevel);
+        setEditTitle(result.data.title);
+        setEditContent(result.data.content);
+        setEditAuthorID(result.data.authorID);
+        setEditPublicationDate(result.data.publicationDate);
+        setEditCategory(result.data.category);
         setEditId(id);
       })
       .catch((error) => {
@@ -73,30 +77,47 @@ const AdminCRUD = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure to delete this Admin?") === true) {
+    if (window.confirm("Are you sure to delete this article?") === true) {
       axios
-        .delete(`https://localhost:7125/api/Admin/${id}`)
+        .delete(`https://localhost:7125/api/Article/${id}`)
         .then((result) => {
           if (result.status === 200) {
-            toast.success("Admin has been deleted");
+            toast.success("Article has been deleted");
             getData();
           }
         })
         .catch((error) => {
           console.error(error); // Hata mesajını konsola yazdır
-          toast.error("Error deleting Admin");
+          toast.error("Error deleting article");
         });
     }
   };
 
+  // const handleDelete = (id) => {
+  //   if (window.confirm("Are you sure to delete this dietitian?") === true) {
+  //     axios.delete(`https://localhost:7125/api/Dietitian/${id}`)
+  //       .then((result) => {
+  //         if (result.status === 200)
+  //         {
+  //           toast.success("Dietitian has been deleted");
+  //           getData();
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         toast.error(error);
+  //       });
+  //   }
+  // };
+
   const handleUpdate = () => {
-    const url = `https://localhost:7125/api/Admin/${editID}`;
+    const url = `https://localhost:7125/api/Article/${editID}`;
     const data = {
-      AdminID: editID,
-      AdminName: editAdminName,
-      passwordHash: editPasswordHash,
-      email: editEmail,
-      authorizationLevel: editAuthorizationLevel,
+      articleID: editID,
+      title: editTitle,
+      content: editContent,
+      authorID: editAuthorID,
+      publicationDate: editPublicationDate,
+      category: editCategory,
     };
 
     axios
@@ -105,7 +126,7 @@ const AdminCRUD = () => {
         handleClose();
         getData();
         clear();
-        toast.success("Admin has been updated");
+        toast.success("Article has been updated");
       })
       .catch((error) => {
         toast.error(error);
@@ -113,12 +134,13 @@ const AdminCRUD = () => {
   };
 
   const handleSave = () => {
-    const url = "https://localhost:7125/api/Admin";
+    const url = "https://localhost:7125/api/Article";
     const data = {
-      adminName: adminName,
-      passwordHash: passwordHash,
-      email: email,
-      authorizationLevel: authorizationLevel,
+      title: title,
+      content: content,
+      authorID: authorID,
+      publicationDate: publicationDate,
+      category: category,
     };
 
     axios
@@ -126,7 +148,7 @@ const AdminCRUD = () => {
       .then((result) => {
         getData();
         clear();
-        toast.success("Admin has been added");
+        toast.success("Article has been added");
       })
       .catch((error) => {
         toast.error(error);
@@ -134,20 +156,22 @@ const AdminCRUD = () => {
   };
 
   const clear = () => {
-    setadminName("");
-    setpasswordHash("");
-    setemail("");
-    setauthorizationLevel("");
-    setEditAdminName("");
-    setEditPasswordHash("");
-    setEditEmail("");
-    setEditAuthorizationLevel("");
+    settitle("");
+    setcontent("");
+    setauthorID("");
+    setpublicationDate("");
+    setcategory("");
+    setEditTitle("");
+    setEditContent("");
+    setEditAuthorID("");
+    setEditPublicationDate("");
+    setEditCategory("");
     setEditId("");
   };
 
   return (
     <Fragment>
-      <AdminMenu/>
+<AdminMenu/>
       <ToastContainer />
       <Container>
         <Row>
@@ -155,38 +179,48 @@ const AdminCRUD = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Admin Name"
-              value={adminName}
-              onChange={(e) => setadminName(e.target.value)}
+              placeholder="Enter Title"
+              value={title}
+              onChange={(e) => settitle(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Password Hash"
-              value={passwordHash}
-              onChange={(e) => setpasswordHash(e.target.value)}
+              placeholder="Enter Content"
+              value={content}
+              onChange={(e) => setcontent(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
+              placeholder="Enter Author ID"
+              value={authorID}
+              onChange={(e) => setauthorID(e.target.value)}
+            />
+          </Col>
+          <Col>
+            <input
+              type="datetime-local"
+              className="form-control"
+              placeholder="Enter Publication Date"
+              value={publicationDate}
+              onChange={(e) => setpublicationDate(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Authorization Level"
-              value={authorizationLevel}
-              onChange={(e) => setauthorizationLevel(e.target.value)}
+              placeholder="Enter Category"
+              value={category}
+              onChange={(e) => setcategory(e.target.value)}
             />
           </Col>
+
           <Col>
             <button className="btn btn-primary" onClick={() => handleSave()}>
               Submit
@@ -199,10 +233,11 @@ const AdminCRUD = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Admin Name</th>
-            <th>Password Hash</th>
-            <th>Email</th>
-            <th>Authorization Level</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>AuthorID</th>
+            <th>Publication Date</th>
+            <th>Category</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -212,21 +247,22 @@ const AdminCRUD = () => {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.adminName}</td>
-                    <td>{item.passwordHash}</td>
-                    <td>{item.email}</td>
-                    <td>{item.authorizationLevel}</td>
+                    <td>{item.title}</td>
+                    <td>{item.content}</td>
+                    <td>{item.authorID}</td>
+                    <td>{item.publicationDate}</td>
+                    <td>{item.category}</td>
                     <td colSpan={2}>
                       <button
                         className="btn btn-primary"
-                        onClick={() => handleEdit(item.adminID)}
+                        onClick={() => handleEdit(item.articleID)}
                       >
                         Edit
                       </button>{" "}
                       &nbsp;
                       <button
                         className="btn btn-danger"
-                        onClick={() => handleDelete(item.adminID)}
+                        onClick={() => handleDelete(item.articleID)}
                         //Yukarıdaki kod örneğinde, her bir dietitian için bir buton oluşturulurken, handleDelete fonksiyonu çağrılırken o dietitian'ın dietitianID'si kullanılır. Bu sayede doğru ID'nin silineceğini sağlarsınız.
                         //React tarafında, kullanıcının bir dietitian'i silmek için tıkladığı butonun içinde bu handleDelete fonksiyonunu çağırmanız gerekiyor.
                       >
@@ -239,6 +275,7 @@ const AdminCRUD = () => {
             : "Loading..."}
         </tbody>
       </Table>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modify / Update Article</Modal.Title>
@@ -249,36 +286,45 @@ const AdminCRUD = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Admin Name"
-                value={editAdminName}
-                onChange={(e) => setEditAdminName(e.target.value)}
+                placeholder="Enter Title"
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Password Hash"
-                value={editPasswordHash}
-                onChange={(e) => setEditPasswordHash(e.target.value)}
+                placeholder="Enter Content"
+                value={editContent}
+                onChange={(e) => setEditContent(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Email"
-                value={editEmail}
-                onChange={(e) => setEditEmail(e.target.value)}
+                placeholder="Enter Author ID"
+                value={editAuthorID}
+                onChange={(e) => setEditAuthorID(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Authorization Level"
-                value={editAuthorizationLevel}
-                onChange={(e) => setEditAuthorizationLevel(e.target.value)}
+                placeholder="Enter Publication Date"
+                value={editPublicationDate}
+                onChange={(e) => setEditPublicationDate(e.target.value)}
+              />
+            </Col>
+            <Col>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Category"
+                value={editCategory}
+                onChange={(e) => setEditCategory(e.target.value)}
               />
             </Col>
           </Row>
@@ -297,4 +343,4 @@ const AdminCRUD = () => {
   );
 };
 
-export default AdminCRUD;
+export default ArticleCRUD;

@@ -1,44 +1,41 @@
 import React, { useState, useEffect, Fragment } from "react";
-import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import AdminMenu from "./pages/AdminMenu";
-import AdminFooter from "./pages/AdminFooter";
+import AdminMenu from "../pages/AdminMenu";
+import AdminFooter from "../pages/AdminFooter";
 
-const DietitianCRUD= () => {
+const AdminCRUD = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [fullName, setfullName] = useState("");
-  const [expertiseArea, setexpertiseArea] = useState("");
-  const [contactInformation, setcontactInformation] = useState("");
+  const [adminName, setadminName] = useState("");
+  const [passwordHash, setpasswordHash] = useState("");
+  const [email, setemail] = useState("");
+  const [authorizationLevel, setauthorizationLevel] = useState("");
 
   const [editID, setEditId] = useState("");
-  const [editFullName, setEditFullName] = useState("");
-  const [editExpertiseArea, setEditExpertiseArea] = useState("");
-  const [editContactInformation, setEditContactInformation] = useState("");
+  const [editAdminName, setEditAdminName] = useState("");
+  const [editPasswordHash, setEditPasswordHash] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [editAuthorizationLevel, setEditAuthorizationLevel] = useState("");
 
-  const dietdata = [
+  const admindata = [
     {
-      dietitianID: 1,
-      fullName: "Billur Kuzudişli",
-      expertiseArea: "Dietitian, Psychologist",
-      contactInformation: "billurkuzudisli@gmail.com",
-    },
-    {
-      dietitianID: 2,
-      fullName: "Beyzanur",
-      expertiseArea: "Developer",
-      contactInformation: "eryilmazbeyza@gmail.com",
+      adminID: 1,
+      adminName: "bne",
+      passwordHash: "1234",
+      email: "eryilmazbeyza@gmail.com",
+      authorizationLevel: "fullautorization",
     },
   ];
 
@@ -50,7 +47,7 @@ const DietitianCRUD= () => {
 
   const getData = () => {
     axios
-      .get("https://localhost:7125/api/Dietitian")
+      .get("https://localhost:7125/api/Admin")
       .then((result) => {
         setData(result.data);
       })
@@ -62,11 +59,12 @@ const DietitianCRUD= () => {
   const handleEdit = (id) => {
     handleShow();
     axios
-      .get(`https://localhost:7125/api/Dietitian/${id}`)
+      .get(`https://localhost:7125/api/Admin/${id}`)
       .then((result) => {
-        setEditFullName(result.data.fullName);
-        setEditExpertiseArea(result.data.expertiseArea);
-        setEditContactInformation(result.data.contactInformation);
+        setEditAdminName(result.data.adminName);
+        setEditPasswordHash(result.data.passwordHash);
+        setEditEmail(result.data.email);
+        setEditAuthorizationLevel(result.data.authorizationLevel);
         setEditId(id);
       })
       .catch((error) => {
@@ -75,45 +73,30 @@ const DietitianCRUD= () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure to delete this dietitian?") === true) {
+    if (window.confirm("Are you sure to delete this Admin?") === true) {
       axios
-        .delete(`https://localhost:7125/api/Dietitian/${id}`)
+        .delete(`https://localhost:7125/api/Admin/${id}`)
         .then((result) => {
           if (result.status === 200) {
-            toast.success("Dietitian has been deleted");
+            toast.success("Admin has been deleted");
             getData();
           }
         })
         .catch((error) => {
           console.error(error); // Hata mesajını konsola yazdır
-          toast.error("Error deleting dietitian");
+          toast.error("Error deleting Admin");
         });
     }
   };
 
-  // const handleDelete = (id) => {
-  //   if (window.confirm("Are you sure to delete this dietitian?") === true) {
-  //     axios.delete(`https://localhost:7125/api/Dietitian/${id}`)
-  //       .then((result) => {
-  //         if (result.status === 200)
-  //         {
-  //           toast.success("Dietitian has been deleted");
-  //           getData();
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         toast.error(error);
-  //       });
-  //   }
-  // };
-
   const handleUpdate = () => {
-    const url = `https://localhost:7125/api/Dietitian/${editID}`;
+    const url = `https://localhost:7125/api/Admin/${editID}`;
     const data = {
-      dietitianID: editID,
-      fullName: editFullName,
-      expertiseArea: editExpertiseArea,
-      contactInformation: editContactInformation,
+      AdminID: editID,
+      AdminName: editAdminName,
+      passwordHash: editPasswordHash,
+      email: editEmail,
+      authorizationLevel: editAuthorizationLevel,
     };
 
     axios
@@ -122,7 +105,7 @@ const DietitianCRUD= () => {
         handleClose();
         getData();
         clear();
-        toast.success("Dietitian has been updated");
+        toast.success("Admin has been updated");
       })
       .catch((error) => {
         toast.error(error);
@@ -130,11 +113,12 @@ const DietitianCRUD= () => {
   };
 
   const handleSave = () => {
-    const url = "https://localhost:7125/api/Dietitian";
+    const url = "https://localhost:7125/api/Admin";
     const data = {
-      fullName: fullName,
-      expertiseArea: expertiseArea,
-      contactInformation: contactInformation,
+      adminName: adminName,
+      passwordHash: passwordHash,
+      email: email,
+      authorizationLevel: authorizationLevel,
     };
 
     axios
@@ -142,7 +126,7 @@ const DietitianCRUD= () => {
       .then((result) => {
         getData();
         clear();
-        toast.success("Dietitian has been added");
+        toast.success("Admin has been added");
       })
       .catch((error) => {
         toast.error(error);
@@ -150,12 +134,14 @@ const DietitianCRUD= () => {
   };
 
   const clear = () => {
-    setfullName("");
-    setexpertiseArea("");
-    setcontactInformation("");
-    setEditFullName("");
-    setEditExpertiseArea("");
-    setEditContactInformation("");
+    setadminName("");
+    setpasswordHash("");
+    setemail("");
+    setauthorizationLevel("");
+    setEditAdminName("");
+    setEditPasswordHash("");
+    setEditEmail("");
+    setEditAuthorizationLevel("");
     setEditId("");
   };
 
@@ -169,27 +155,36 @@ const DietitianCRUD= () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Full Name"
-              value={fullName}
-              onChange={(e) => setfullName(e.target.value)}
+              placeholder="Enter Admin Name"
+              value={adminName}
+              onChange={(e) => setadminName(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Expertise Area"
-              value={expertiseArea}
-              onChange={(e) => setexpertiseArea(e.target.value)}
+              placeholder="Enter Password Hash"
+              value={passwordHash}
+              onChange={(e) => setpasswordHash(e.target.value)}
             />
           </Col>
           <Col>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Contact Information"
-              value={contactInformation}
-              onChange={(e) => setcontactInformation(e.target.value)}
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
+            />
+          </Col>
+          <Col>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Authorization Level"
+              value={authorizationLevel}
+              onChange={(e) => setauthorizationLevel(e.target.value)}
             />
           </Col>
           <Col>
@@ -204,9 +199,10 @@ const DietitianCRUD= () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Full Name</th>
-            <th>Expertise Area</th>
-            <th>Contact Information</th>
+            <th>Admin Name</th>
+            <th>Password Hash</th>
+            <th>Email</th>
+            <th>Authorization Level</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -216,20 +212,21 @@ const DietitianCRUD= () => {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.fullName}</td>
-                    <td>{item.expertiseArea}</td>
-                    <td>{item.contactInformation}</td>
+                    <td>{item.adminName}</td>
+                    <td>{item.passwordHash}</td>
+                    <td>{item.email}</td>
+                    <td>{item.authorizationLevel}</td>
                     <td colSpan={2}>
                       <button
                         className="btn btn-primary"
-                        onClick={() => handleEdit(item.dietitianID)}
+                        onClick={() => handleEdit(item.adminID)}
                       >
                         Edit
                       </button>{" "}
                       &nbsp;
                       <button
                         className="btn btn-danger"
-                        onClick={() => handleDelete(item.dietitianID)}
+                        onClick={() => handleDelete(item.adminID)}
                         //Yukarıdaki kod örneğinde, her bir dietitian için bir buton oluşturulurken, handleDelete fonksiyonu çağrılırken o dietitian'ın dietitianID'si kullanılır. Bu sayede doğru ID'nin silineceğini sağlarsınız.
                         //React tarafında, kullanıcının bir dietitian'i silmek için tıkladığı butonun içinde bu handleDelete fonksiyonunu çağırmanız gerekiyor.
                       >
@@ -242,10 +239,9 @@ const DietitianCRUD= () => {
             : "Loading..."}
         </tbody>
       </Table>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modify / Update Dietitian</Modal.Title>
+          <Modal.Title>Modify / Update Article</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
@@ -253,27 +249,36 @@ const DietitianCRUD= () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Full Name"
-                value={editFullName}
-                onChange={(e) => setEditFullName(e.target.value)}
+                placeholder="Enter Admin Name"
+                value={editAdminName}
+                onChange={(e) => setEditAdminName(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Expertise Area"
-                value={editExpertiseArea}
-                onChange={(e) => setEditExpertiseArea(e.target.value)}
+                placeholder="Enter Password Hash"
+                value={editPasswordHash}
+                onChange={(e) => setEditPasswordHash(e.target.value)}
               />
             </Col>
             <Col>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Contact Information"
-                value={editContactInformation}
-                onChange={(e) => setEditContactInformation(e.target.value)}
+                placeholder="Enter Email"
+                value={editEmail}
+                onChange={(e) => setEditEmail(e.target.value)}
+              />
+            </Col>
+            <Col>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Authorization Level"
+                value={editAuthorizationLevel}
+                onChange={(e) => setEditAuthorizationLevel(e.target.value)}
               />
             </Col>
           </Row>
@@ -292,4 +297,4 @@ const DietitianCRUD= () => {
   );
 };
 
-export default DietitianCRUD;
+export default AdminCRUD;

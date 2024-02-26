@@ -1,13 +1,13 @@
-import "./App.css";
-import DietitianCRUD from "./DietitianCRUD";
-import ArticleCRUD from "./ArticleCRUD";
-import DietPlanCRUD from "./DietPlanCRUD";
-import MealTrackingCRUD from "./MealTrackingCRUD";
-import UserCRUD from "./UserCRUD";
-import AdminCRUD from "./AdminCRUD";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdminCRUD from "./crud/AdminCRUD";
+import ArticleCRUD from "./crud/ArticleCRUD";
+import DietitianCRUD from "./crud/DietitianCRUD";
+import DietPlanCRUD from "./crud/DietPlanCRUD";
+import MealTrackingCRUD from "./crud/MealTrackingCRUD";
+import UserCRUD from "./crud/UserCRUD";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Offer from "./pages/Offer";
 import Recipe from "./pages/Recipe";
 import Contact from "./pages/Contact";
@@ -18,6 +18,7 @@ import PregnantBlog from "./pages/PregnantBlog";
 import WeightBlog from "./pages/WeightBlog";
 import AutoimmuneBlog from "./pages/AutoimmuneBlog";
 import ChildHealthBlog from "./pages/ChildHealthBlog";
+import "./App.css";
 
 function App() {
   return (
