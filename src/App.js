@@ -5,16 +5,19 @@ import DietPlanCRUD from "./DietPlanCRUD";
 import MealTrackingCRUD from "./MealTrackingCRUD";
 import UserCRUD from "./UserCRUD";
 import AdminCRUD from "./AdminCRUD";
-import Index from "./pages";
+import Index from "./pages/Index";
 import About from "./pages/About";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Offer from "./pages/Offer";
 import Recipe from "./pages/Recipe";
 import Contact from "./pages/Contact";
-import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
+import PregnantBlog from "./pages/PregnantBlog";
+import WeightBlog from "./pages/WeightBlog";
+import AutoimmuneBlog from "./pages/AutoimmuneBlog";
+import ChildHealthBlog from "./pages/ChildHealthBlog";
 
 function App() {
   return (
@@ -35,11 +38,12 @@ function App() {
           <Route path='/usercrud' element={<UserCRUD/>}/>
           <Route path='/admincrud' element={<AdminCRUD/>}/>
           <Route path='/adminlogin' element={<AdminLogin/>}/>
+          <Route path='/pregnantblog' element={<PregnantBlog/>}/>
+          <Route path='/weightblog' element={<WeightBlog/>}/>
+          <Route path='/autoimmuneblog' element={<AutoimmuneBlog/>}/>
+          <Route path='/childhealthblog' element={<ChildHealthBlog/>}/>
         </Routes>
       </Router>
-      {/* <Registration/> <br></br> */}
-      {/* <Login/> */}
-
     </div>
   );
 }

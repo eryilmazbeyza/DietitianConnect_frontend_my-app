@@ -12,17 +12,17 @@ function Offer() {
           <div className="content">
             <div className="container">
               <h2 className="entry-title">
-                Accusamus iusto odio dignissimos ducimus qui blanditiis
-                praesentium deleniti corrupti quos dolores
+                Diyet Teklifleriyle Sağlıklı Bir Yaşama Adım Atın!
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.{" "}
+                Merhaba, ben Dyt. Billur Kuzudişli. Sağlıklı bir yaşam sürmek
+                istiyorsanız doğru yerdesiniz! Size özel beslenme programları ve
+                danışmanlık hizmetleriyle hayalinizdeki sağlıklı yaşama bir adım
+                daha yaklaşabilirsiniz.{" "}
               </p>
-
               <hr />
+              <h3>Aylık Tekliflerimiz:</h3>
+              <br />
 
               <div className="row">
                 <div className="col-md-3">
@@ -30,11 +30,14 @@ function Offer() {
                     <div className="feature-icon">
                       <i className="icon-bowl"></i>
                     </div>
-                    <h3 className="feature-title">Lorem ipsum</h3>
+                    <h3 className="feature-title">
+                      Temel Paket: Sağlıklı Başlangıç
+                    </h3>
                     <p>
-                      Pellentesque erat erat mattis feugiat pharetra, viverra
-                      nec mauris. Nullam sed risus aliquam congue nunc ac
-                      convallis mi.{" "}
+                      Bireysel Beslenme Danışmanlığı <br />
+                      Haftalık Takip ve Raporlama
+                      <br />
+                      Özel Beslenme Programı{" "}
                     </p>
                   </div>
                 </div>
@@ -43,11 +46,14 @@ function Offer() {
                     <div className="feature-icon">
                       <i className="icon-oil"></i>
                     </div>
-                    <h3 className="feature-title">Tempora incidunt</h3>
+                    <h3 className="feature-title">
+                      Orta Seviye Paket: Hedefe Doğru Yolculuk
+                    </h3>
                     <p>
-                      Pellentesque erat erat mattis feugiat pharetra, viverra
-                      nec mauris. Nullam sed risus aliquam congue nunc ac
-                      convallis mi.{" "}
+                      Temel Paketin Tüm İçeriği <br />
+                      Aylık Detoks Programı
+                      <br />
+                      Haftalık Online Grup Seminerleri{" "}
                     </p>
                   </div>
                 </div>
@@ -56,11 +62,15 @@ function Offer() {
                     <div className="feature-icon">
                       <i className="icon-honey"></i>
                     </div>
-                    <h3 className="feature-title">Cupidatat proident</h3>
+                    <h3 className="feature-title">
+                      Premium Paket: Kişiye Özel Lüks Deneyim
+                    </h3>
                     <p>
-                      Pellentesque erat erat mattis feugiat pharetra, viverra
-                      nec mauris. Nullam sed risus aliquam congue nunc ac
-                      convallis mi.{" "}
+                      Orta Seviye Paketin Tüm İçeriği
+                      <br />
+                      Aylık Sporcu Beslenmesi Analizi
+                      <br />
+                      Telefonla İleri Düzey Takip ve Destek{" "}
                     </p>
                   </div>
                 </div>
@@ -69,11 +79,17 @@ function Offer() {
                     <div className="feature-icon">
                       <i className="icon-chocolate"></i>
                     </div>
-                    <h3 className="feature-title">Aliquam quaerat</h3>
+                    <h3 className="feature-title">
+                      Elite Paket: Sağlığınıza Zirve Deneyimi!
+                    </h3>
                     <p>
-                      Pellentesque erat erat mattis feugiat pharetra, viverra
-                      nec mauris. Nullam sed risus aliquam congue nunc ac
-                      convallis mi.{" "}
+                      Kişiye Özel Beslenme ve Egzersiz Programı
+                      <br />
+                      Haftalık Birebir Danışmanlık
+                      <br />
+                      Meyve ve Sebze Detoksu
+                      <br />
+                      Premium Sağlık Kontrolleri{" "}
                     </p>
                   </div>
                 </div>
@@ -82,21 +98,16 @@ function Offer() {
               <hr />
 
               <p>
-                Pellentesque erat erat, mattis non feugiat pharetra, viverra nec
-                mauris. Nullam sed risus aliquam, congue nunc ac, convallis mi.{" "}
-                <a href="assets/#">
-                  Cras pellentesque sit amet urna fermentum ornare
-                </a>
-                . Sed in metus justo. Cras sit amet odio eu enim condimentum
-                pretium vitae nec enim. In aliquet dolor nisl. Proin semper
-                turpis nec posuere consectetur. Vivamus tristique rutrum quam,
-                eu mattis elit semper eget. Sed ultrices, tellus dapibus
-                consectetur porttitor, dui sapien mattis odio, vel imperdiet
-                ipsum risus at risus. Mauris auctor tortor id sollicitudin
-                tincidunt. Integer magna leo, sagittis a congue nec, viverra non
-                mi. Proin dapibus pharetra tristique. Aliquam id lorem metus.
-                Vivamus elit turpis, venenatis eu luctus quis, suscipit eget
-                urna.
+                <h4>Neden Benimle Çalışmalısınız? </h4>
+                Deneyimli Bir Profesyonele Güvenin: Obezite ve Metabolik
+                Cerrahi'de klinik deneyimimle size en iyi hizmeti sunuyorum.
+                Kişiye Özel Yaklaşım: Her birey benzersizdir, bu nedenle size
+                özel bir beslenme planı oluşturuyorum. Takip ve Motivasyon:
+                Yolculuğunuz boyunca sizi destekleyerek hedeflerinize ulaşmanıza
+                yardımcı oluyorum. Haydi, sağlıklı bir yaşam için ilk adımı
+                birlikte atalım! Detaylı bilgi ve randevu için bana{" "}
+                <a href="/contact">iletişim bilgileri</a> sayfasındaki adresten
+                ulaşabilirsiniz. <br/>Sağlıklı günler dilerim, <br/>Dyt. Billur Kuzudişli
               </p>
             </div>
           </div>

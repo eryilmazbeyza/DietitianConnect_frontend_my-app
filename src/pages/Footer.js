@@ -7,32 +7,29 @@ function Footer() {
           <div className="container">
             <i className="icon-cupcake logo"></i>
             <nav className="footer-navigation">
-            <Link to="/about">About me</Link>
-            <Link to="/myoffer">My offer</Link>
-            <Link to="/recipes">Recipes</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/about">Hakkımda</Link>
+            <Link to="/myoffer">Teklifler</Link>
+            <Link to="/recipes">Tarifler</Link>
+            <Link to="/contact">İletişim</Link>
             </nav>
             <div className="subscribe">
-              <form action="#">
+              <form action="/login">
                 <input
                   type="text"
                   placeholder="Enter your email to join newsletter..."
                 />
-                <input type="submit" value="Subscribe" />
+                <input type="submit" value="Kayıt Ol" />
               </form>
             </div>
             <div className="social-links">
-              <a href="assets/#" className="facebook">
-                <i className="fa fa-facebook"></i>
+              <a href="https://www.instagram.com/dyt.billurkuzudisli/" className="twitter">
+              <i id="social-in" class="fa fa-instagram fa"></i>
               </a>
-              <a href="assets/#" className="twitter">
-                <i className="fa fa-twitter"></i>
+              <a href="https://www.linkedin.com/in/billur-kuzudisli-ery%C4%B1lmaz-514274109/?originalSubdomain=tr" className="pinterest">
+              <i className="fab fa-linkedin fa"></i>
               </a>
-              <a href="assets/#" className="google-plus">
-                <i className="fa fa-google-plus"></i>
-              </a>
-              <a href="assets/#" className="pinterest">
-                <i className="fa fa-pinterest"></i>
+              <a href="https://www.salusmental.com/uzmanlarimiz/diyetisyen-billur-kuzudisli" className="facebook">
+                <i className="fa fa-pencil"></i>
               </a>
             </div>
             <div className="colophon">

@@ -19,7 +19,7 @@ function Login() {
       PasswordHash: passwordHash,
       Email: email,
     };
-    const url = "https://localhost:7125/api/User/Login";
+    const url = "https://localhost:7125/api/User/User/Login";
     axios
       .post(url, data)
       .then((result) => {

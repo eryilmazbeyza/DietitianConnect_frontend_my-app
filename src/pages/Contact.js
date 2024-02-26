@@ -11,31 +11,28 @@ function Contact() {
           <div class="content">
             <div class="container">
               <h2 class="entry-title">
-                Curabitur sit amet ultricies felis nunc ultrices gravida
-                fringilla in volutpat massa vitae elementum tincidunt
+                Bize Ulaşın, Sağlıklı Bir Başlangıç İçin Adım Atın!
               </h2>
               <p>
-                Pellentesque erat erat, mattis non feugiat pharetra, viverra nec
-                mauris. Nullam sed risus aliquam, congue nunc ac, convallis mi.
-                Cras pellentesque sit amet urna fermentum ornare. Sed in metus
-                justo. Cras sit amet odio eu enim condimentum pretium vitae nec
-                enim. In aliquet dolor nisl.
+                Sağlığınız bizim için önemli. Sorularınızı, ihtiyaçlarınızı veya
+                sağlıklı bir yaşam için başlamak istediğiniz adımları paylaşın.
+                Size en uygun çözümü birlikte bulalım. İletişim kurun, sağlıklı
+                bir başlangıç için birlikte hareket edelim!
               </p>
 
               <div class="contact-detail">
                 <span class="location">
-                  <img src="assets/images/icon-map-marker-alt.png" alt=""/> 559 Avenue
-                  Street, New York
+                  <img src="assets/images/icon-map-marker-alt.png" alt="" /> Ataşehir, İstanbul
                 </span>
                 <span class="email">
-                  <img src="assets/images/icon-envelope.png" alt=""/>{" "}
-                  <a href="assets/mailto:office@companyname.com">
-                    office@companyname.com
+                  <img src="assets/images/icon-envelope.png" alt="" />{" "}
+                  <a href="assets/mailto:billurkuzudisli@gmail.com">
+                  billurkuzudisli@gmail.com
                   </a>
                 </span>
                 <span class="phone">
-                  <img src="assets/images/icon-phone.png" alt=""/>{" "}
-                  <a href="assets/tel:(942)321490234">(942) 321 490 234</a>
+                  <img src="assets/images/icon-phone.png" alt="" />{" "}
+                  <a href="assets/tel:(+90)5365054033">(+90)536 505 40 33</a>
                 </span>
               </div>
 

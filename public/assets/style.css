@@ -616,4 +616,38 @@ p { margin-top: 0; }
 .site-footer .social-links .pinterest:hover { background-color: #e33f4d; }
 .site-footer .colophon { font-size: 14px; font-size: 0.875rem; }
 
-/*# sourceMappingURL=style.css.map */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  /* İstediğiniz hover efektlerini ekleyebilirsiniz */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px; /* Köşeleri yuvarlak hale getiriyoruz */
+  padding: 10px;
+}
+
+/* Linkin üzerine gelindiğinde koyulaşma */
+.dropdown-content a:hover {
+  font-weight: bold;
+  color: #333; /* Link rengini değiştirmek istiyorsanız burada ayarlayabilirsiniz */
+  
+  /* İstediğiniz koyulaşma efektlerini ekleyebilirsiniz */
+}
+
+/* İçerik elemanları arasına boşluk ekleyelim */
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px; /* İstediğiniz boşluğu ayarlayabilirsiniz */
+}

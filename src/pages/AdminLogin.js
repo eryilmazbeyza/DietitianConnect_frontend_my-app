@@ -2,6 +2,8 @@ import React, { Fragment, useState } from "react";
 import "./Modal.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Menu from "./Menu";
+
 
 function AdminLogin({ setOpenModal }) {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -55,6 +57,7 @@ function AdminLogin({ setOpenModal }) {
 
   return (
     <Fragment>
+      <Menu/>
       <div className="modalBackground">
         <div className="modalContainer">
           <div className="titleCloseBtn">
@@ -99,7 +102,7 @@ function AdminLogin({ setOpenModal }) {
             </button>
           </div>
         </div>
-      </div>
+        </div>
     </Fragment>
   );
 }

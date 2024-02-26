@@ -9,7 +9,7 @@ function AdminMenu() {
           <a href="/admin" id="branding" className="pull-left">
             <i className="icon-cupcake logo"></i>
             <h1 className="site-title">
-              <Link to="/admin">Name Surname</Link>
+              <Link to="/admin">Dyt. Billur Kuzudişli</Link>
             </h1>
           </a>
           {/* <!-- Default snippet for navigation --> */}
